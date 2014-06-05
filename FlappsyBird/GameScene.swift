@@ -55,10 +55,17 @@ class GameScene: SKScene {
     
     func spawnBird() {
         let birdTexture1 = SKTexture(imageNamed: "Bird-01")
+        let birdTexture2 = SKTexture(imageNamed: "Bird-02")
+        let birdTexture3 = SKTexture(imageNamed: "Bird-03")
+        let birdTexture4 = SKTexture(imageNamed: "Bird-04")
         
         let bird = SKSpriteNode(texture: birdTexture1)
         bird.setScale(2.0)
         bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
+        
+        let animAction = SKAction.animateWithTextures([birdTexture1, birdTexture2, birdTexture3, birdTexture4], timePerFrame: 0.2)
+        let flapAction = SKAction.repeatActionForever(animAction)
+        bird.runAction(flapAction)
         
         self.addChild(bird)
     }
