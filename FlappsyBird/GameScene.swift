@@ -102,6 +102,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
+        
+        for touch: AnyObject in touches {
+            let location = touch.locationInNode(self)
+            
+            bird!.physicsBody.velocity = CGVectorMake(0, 0)
+            bird!.physicsBody.applyImpulse(CGVectorMake(0, 30))
+        }
     }
    
     override func update(currentTime: CFTimeInterval) {
