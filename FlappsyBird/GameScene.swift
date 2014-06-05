@@ -31,16 +31,16 @@ class GameScene: SKScene {
     }
     
     func setupGround() {
-        addBackgroundSprite(groundTexture)
+        addBackgroundSprite(groundTexture, speed: 50)
     }
     
     func setupSkyline() {
-        addBackgroundSprite(skyTexture, offset: CGSize(width: 0, height: groundTexture.size().height * 2.0))
+        addBackgroundSprite(skyTexture, speed: 10, offset: CGSize(width: 0, height: groundTexture.size().height * 2.0))
     }
     
-    func addBackgroundSprite(texture: SKTexture, offset: CGSize = CGSizeZero) {
+    func addBackgroundSprite(texture: SKTexture, speed: CGFloat, offset: CGSize = CGSizeZero) {
         // Setup an action: repeatForever([move, reset])
-        let moveSpriteAction = SKAction.moveByX(-texture.size().width * 2.0, y: 0, duration: NSTimeInterval(0.1 * texture.size().width * 2.0))
+        let moveSpriteAction = SKAction.moveByX(-texture.size().width * 2.0, y: 0, duration: NSTimeInterval((1.0 / speed) * texture.size().width * 2.0))
         let resetSpriteAction = SKAction.moveByX(texture.size().width * 2.0, y: 0, duration: 0.0)
         let moveSpritesForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveSpriteAction, resetSpriteAction]))
         
