@@ -37,10 +37,12 @@ class GameScene: SKScene {
     }
     
     func addBackgroundSprite(texture: SKTexture, offset: CGSize = CGSizeZero) {
-        let sprite = SKSpriteNode(texture: texture)
-        sprite.setScale(2.0)
-        sprite.position = CGPointMake(sprite.size.width / 2.0 + offset.width, sprite.size.height / 2.0 + offset.height)
-        self.addChild(sprite)
+        for var i:CGFloat = 0; i < self.frame.size.width / texture.size().width; ++i {
+            let sprite = SKSpriteNode(texture: texture)
+            sprite.setScale(2.0)
+            sprite.position = CGPointMake(i * sprite.size.width + offset.width, sprite.size.height / 2.0 + offset.height)
+            self.addChild(sprite)
+        }
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
