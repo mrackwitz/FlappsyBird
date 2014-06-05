@@ -24,6 +24,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let skyTexture    = SKTexture(imageNamed: "Sky")
     
     var bird : SKNode?
+    var gamePaused = false
     
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
@@ -102,6 +103,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         /* Called when a touch begins */
+        if gamePaused {
+            return
+        }
         
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
@@ -118,6 +122,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact!) {
         /* Called when two physic objects collide */
         NSLog("didBeginContact: %@", contact)
+        
+        if gamePaused {
+            return
+        }
+        
+        gamePaused = true
         
         // Bird flaps no more!
         self.bird!.removeActionForKey(ActionKey.Flap.toRaw())
