@@ -21,6 +21,8 @@ class GameScene: SKScene {
     }
     
     func setupScene() {
+        self.setupPhysicsWorld()
+        
         // Setup background color
         self.backgroundColor = skyColor
         
@@ -51,6 +53,11 @@ class GameScene: SKScene {
             sprite.runAction(moveSpritesForeverAction)
             self.addChild(sprite)
         }
+    }
+    
+    func setupPhysicsWorld() {
+        // Add Gravity!
+        self.physicsWorld.gravity = CGVectorMake(0.0, -5.0)
     }
     
     func spawnBird() {
