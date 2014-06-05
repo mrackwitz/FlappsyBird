@@ -34,6 +34,12 @@ class GameScene: SKScene {
     
     func setupGround() {
         addBackgroundSprite(groundTexture, speed: 50)
+        
+        let ground = SKNode()
+        ground.position = CGPointMake(0, groundTexture.size().height)
+        ground.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, groundTexture.size().height * 2.0))
+        ground.physicsBody.dynamic = false
+        self.addChild(ground)
     }
     
     func setupSkyline() {
