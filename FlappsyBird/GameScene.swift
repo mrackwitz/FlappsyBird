@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene {
+class GameScene: SKScene, SKPhysicsContactDelegate {
     
     let skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
     
@@ -64,6 +64,7 @@ class GameScene: SKScene {
     func setupPhysicsWorld() {
         // Add Gravity!
         self.physicsWorld.gravity = CGVectorMake(0.0, -5.0)
+        self.physicsWorld.contactDelegate = self
     }
     
     func spawnBird() {
@@ -92,5 +93,13 @@ class GameScene: SKScene {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
+    }
+    
+    func didBeginContact(contact: SKPhysicsContact!) {
+        /* Called when two physic objects collide */
+    }
+    
+    func didEndContact(contact: SKPhysicsContact!) {
+        /* Called when the contact of two physic objects ends */
     }
 }
