@@ -23,7 +23,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let groundTexture = SKTexture(imageNamed: "Land")
     let skyTexture    = SKTexture(imageNamed: "Sky")
     
-    var bird : SKNode?
+    var 🐦 : SKNode?
     var gamePaused = false
     
     override func didMoveToView(view: SKView) {
@@ -85,20 +85,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         let birdTexture3 = SKTexture(imageNamed: "Bird-03")
         let birdTexture4 = SKTexture(imageNamed: "Bird-04")
         
-        let bird = SKSpriteNode(texture: birdTexture1)
-        bird.setScale(2.0)
-        bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
+        let 🐦 = SKSpriteNode(texture: birdTexture1)
+        🐦.setScale(2.0)
+        🐦.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
         
         let animAction = SKAction.animateWithTextures([birdTexture1, birdTexture2, birdTexture3, birdTexture4], timePerFrame: 0.2)
         let flapAction = SKAction.repeatActionForever(animAction)
-        bird.runAction(flapAction, withKey: ActionKey.Flap.toRaw())
+        🐦.runAction(flapAction, withKey: ActionKey.Flap.toRaw())
         
-        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
-        bird.physicsBody.dynamic = true
-        bird.physicsBody.contactTestBitMask = CollisionBitMask.Floor.toRaw()
-        self.bird = bird
+        🐦.physicsBody = SKPhysicsBody(circleOfRadius: 🐦.size.height / 2.0)
+        🐦.physicsBody.dynamic = true
+        🐦.physicsBody.contactTestBitMask = CollisionBitMask.Floor.toRaw()
+        self.🐦 = 🐦
         
-        self.addChild(bird)
+        self.addChild(🐦)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
@@ -110,8 +110,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.locationInNode(self)
             
-            bird!.physicsBody.velocity = CGVectorMake(0, 0)
-            bird!.physicsBody.applyImpulse(CGVectorMake(0, 30))
+            🐦!.physicsBody.velocity = CGVectorMake(0, 0)
+            🐦!.physicsBody.applyImpulse(CGVectorMake(0, 30))
         }
     }
    
@@ -130,7 +130,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         gamePaused = true
         
         // Bird flaps no more!
-        self.bird!.removeActionForKey(ActionKey.Flap.toRaw())
+        self.🐦!.removeActionForKey(ActionKey.Flap.toRaw())
     }
     
     func didEndContact(contact: SKPhysicsContact!) {
