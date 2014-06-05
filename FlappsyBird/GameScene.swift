@@ -97,9 +97,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     func didBeginContact(contact: SKPhysicsContact!) {
         /* Called when two physic objects collide */
+        NSLog("didBeginContact: %@", contact)
     }
     
     func didEndContact(contact: SKPhysicsContact!) {
         /* Called when the contact of two physic objects ends */
+        NSLog("didEndContact: %@", contact)
     }
 }
