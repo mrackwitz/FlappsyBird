@@ -26,6 +26,8 @@ class GameScene: SKScene {
         
         self.setupGround()
         self.setupSkyline()
+        
+        self.spawnBird()
     }
     
     func setupGround() {
@@ -43,6 +45,16 @@ class GameScene: SKScene {
             sprite.position = CGPointMake(i * sprite.size.width + offset.width, sprite.size.height / 2.0 + offset.height)
             self.addChild(sprite)
         }
+    }
+    
+    func spawnBird() {
+        let birdTexture1 = SKTexture(imageNamed: "Bird-01")
+        
+        let bird = SKSpriteNode(texture: birdTexture1)
+        bird.setScale(2.0)
+        bird.position = CGPoint(x: self.frame.size.width * 0.35, y:self.frame.size.height * 0.6)
+        
+        self.addChild(bird)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
