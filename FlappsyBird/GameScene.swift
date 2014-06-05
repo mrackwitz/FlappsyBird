@@ -12,6 +12,7 @@ class GameScene: SKScene {
     
     let skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
     
+    let groundTexture = SKTexture(imageNamed: "Land")
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         setupScene()
@@ -20,6 +21,15 @@ class GameScene: SKScene {
     func setupScene() {
         // Setup background color
         self.backgroundColor = skyColor
+        
+        self.setupGround()
+    }
+    
+    func setupGround() {
+        let sprite = SKSpriteNode(texture: groundTexture)
+        sprite.setScale(2.0)
+        sprite.position = CGPointMake(sprite.size.width / 2.0, sprite.size.height / 2.0)
+        self.addChild(sprite)
     }
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
