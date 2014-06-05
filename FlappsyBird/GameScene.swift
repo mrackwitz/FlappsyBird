@@ -74,6 +74,9 @@ class GameScene: SKScene {
         let flapAction = SKAction.repeatActionForever(animAction)
         bird.runAction(flapAction)
         
+        bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
+        bird.physicsBody.dynamic = true
+        
         self.addChild(bird)
     }
     
