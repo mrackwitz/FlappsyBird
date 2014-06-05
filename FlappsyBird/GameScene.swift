@@ -39,10 +39,16 @@ class GameScene: SKScene {
     }
     
     func addBackgroundSprite(texture: SKTexture, offset: CGSize = CGSizeZero) {
-        for var i:CGFloat = 0; i < self.frame.size.width / texture.size().width; ++i {
+        // Setup an action: repeatForever([move, reset])
+        let moveSpriteAction = SKAction.moveByX(-texture.size().width * 2.0, y: 0, duration: NSTimeInterval(0.1 * texture.size().width * 2.0))
+        let resetSpriteAction = SKAction.moveByX(texture.size().width * 2.0, y: 0, duration: 0.0)
+        let moveSpritesForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveSpriteAction, resetSpriteAction]))
+        
+        for var i:CGFloat = 0; i < 2.0 + self.frame.size.width / (texture.size().width * 2.0); ++i {
             let sprite = SKSpriteNode(texture: texture)
             sprite.setScale(2.0)
             sprite.position = CGPointMake(i * sprite.size.width + offset.width, sprite.size.height / 2.0 + offset.height)
+            sprite.runAction(moveSpritesForeverAction)
             self.addChild(sprite)
         }
     }
