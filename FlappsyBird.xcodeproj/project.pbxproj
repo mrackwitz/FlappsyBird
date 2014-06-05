@@ -15,6 +15,7 @@
 		714A15BF19409F3F0004DBE3 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 714A15BE19409F3F0004DBE3 /* Images.xcassets */; };
 		714A15CB19409F3F0004DBE3 /* FlappsyBirdTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15CA19409F3F0004DBE3 /* FlappsyBirdTests.swift */; };
 		714A15D51940A0F10004DBE3 /* Bird.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 714A15D41940A0F10004DBE3 /* Bird.atlas */; };
+		714A15D71940AB880004DBE3 /* SKPhysicsContactDelegateTrampoline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714A15D61940AB880004DBE3 /* SKPhysicsContactDelegateTrampoline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,7 @@
 		714A15C919409F3F0004DBE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		714A15CA19409F3F0004DBE3 /* FlappsyBirdTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlappsyBirdTests.swift; sourceTree = "<group>"; };
 		714A15D41940A0F10004DBE3 /* Bird.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Bird.atlas; sourceTree = "<group>"; };
+		714A15D61940AB880004DBE3 /* SKPhysicsContactDelegateTrampoline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SKPhysicsContactDelegateTrampoline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,7 @@
 				714A15B519409F3E0004DBE3 /* GameScene.sks */,
 				714A15B719409F3F0004DBE3 /* GameScene.swift */,
 				714A15B919409F3F0004DBE3 /* GameViewController.swift */,
+				714A15D61940AB880004DBE3 /* SKPhysicsContactDelegateTrampoline.swift */,
 				714A15BB19409F3F0004DBE3 /* Main.storyboard */,
 				714A15BE19409F3F0004DBE3 /* Images.xcassets */,
 				714A15D41940A0F10004DBE3 /* Bird.atlas */,
@@ -221,6 +224,7 @@
 			files = (
 				714A15B819409F3F0004DBE3 /* GameScene.swift in Sources */,
 				714A15BA19409F3F0004DBE3 /* GameViewController.swift in Sources */,
+				714A15D71940AB880004DBE3 /* SKPhysicsContactDelegateTrampoline.swift in Sources */,
 				714A15B419409F3E0004DBE3 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

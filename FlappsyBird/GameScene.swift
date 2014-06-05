@@ -8,7 +8,7 @@
 
 import SpriteKit
 
-class GameScene: SKScene, SKPhysicsContactDelegate {
+class GameScene: SKScene {
     
     enum CollisionBitMask : UInt32 {
         case Floor = 1
@@ -76,7 +76,25 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func setupPhysicsWorld() {
         // Add Gravity!
         self.physicsWorld.gravity = CGVectorMake(0.0, -5.0)
-        self.physicsWorld.contactDelegate = self
+        
+        self.setDidBeginContact { (contact: SKPhysicsContact) in
+            /* Called when two physic objects collide */
+            NSLog("didBeginContact: %@", contact)
+            
+            if self.gamePaused {
+                return
+            }
+            
+            self.gamePaused = true
+            
+            // Bird flaps no more!
+            self.bird!.removeActionForKey(ActionKey.Flap.toRaw())
+        }
+        
+        self.setDidEndContact { (contact: SKPhysicsContact) in
+            /* Called when the contact of two physic objects ends */
+            NSLog("didEndContact: %@", contact)
+        }
     }
     
     func spawnBird() {
@@ -117,24 +135,5 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
    
     override func update(currentTime: CFTimeInterval) {
         /* Called before each frame is rendered */
-    }
-    
-    func didBeginContact(contact: SKPhysicsContact!) {
-        /* Called when two physic objects collide */
-        NSLog("didBeginContact: %@", contact)
-        
-        if gamePaused {
-            return
-        }
-        
-        gamePaused = true
-        
-        // Bird flaps no more!
-        self.bird!.removeActionForKey(ActionKey.Flap.toRaw())
-    }
-    
-    func didEndContact(contact: SKPhysicsContact!) {
-        /* Called when the contact of two physic objects ends */
-        NSLog("didEndContact: %@", contact)
     }
 }
