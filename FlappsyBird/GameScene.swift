@@ -13,6 +13,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     enum CollisionBitMask : UInt32 {
         case Floor = 1
     }
+
+    enum ActionKey : String {
+        case Flap = "flap"
+    }
     
     let skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
     
@@ -86,7 +90,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let animAction = SKAction.animateWithTextures([birdTexture1, birdTexture2, birdTexture3, birdTexture4], timePerFrame: 0.2)
         let flapAction = SKAction.repeatActionForever(animAction)
-        bird.runAction(flapAction, withKey: "flap")
+        bird.runAction(flapAction, withKey: ActionKey.Flap.toRaw())
         
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         bird.physicsBody.dynamic = true
@@ -109,7 +113,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         NSLog("didBeginContact: %@", contact)
         
         // Bird flaps no more!
-        self.bird!.removeActionForKey("flap")
+        self.bird!.removeActionForKey(ActionKey.Flap.toRaw())
     }
     
     func didEndContact(contact: SKPhysicsContact!) {
