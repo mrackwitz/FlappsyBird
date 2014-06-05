@@ -18,32 +18,32 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         case Flap = "flap"
     }
     
-    let skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
+    let 🌈 = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
     
     let groundTexture = SKTexture(imageNamed: "Land")
-    let skyTexture    = SKTexture(imageNamed: "Sky")
+    let 🏢Texture     = SKTexture(imageNamed: "Sky")
     
     var 🐦 : SKNode?
     var gamePaused = false
     
     override func didMoveToView(view: SKView) {
-        /* Setup your scene here */
-        setupScene()
+        /* 🔧 your scene here */
+        🔧Scene()
     }
     
-    func setupScene() {
-        self.setupPhysicsWorld()
+    func 🔧Scene() {
+        self.🔧🌍()
         
-        // Setup background color
-        self.backgroundColor = skyColor
+        // 🔧 background color
+        self.backgroundColor = 🌈
         
-        self.setupGround()
-        self.setupSkyline()
+        self.🔧Ground()
+        self.🔧🏢()
         
         self.spawnBird()
     }
     
-    func setupGround() {
+    func 🔧Ground() {
         addBackgroundSprite(groundTexture, speed: 50)
         
         let ground = SKNode()
@@ -54,12 +54,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         self.addChild(ground)
     }
     
-    func setupSkyline() {
-        addBackgroundSprite(skyTexture, speed: 10, offset: CGSize(width: 0, height: groundTexture.size().height * 2.0))
+    func 🔧🏢() {
+        addBackgroundSprite(🏢Texture, speed: 10, offset: CGSize(width: 0, height: groundTexture.size().height * 2.0))
     }
     
     func addBackgroundSprite(texture: SKTexture, speed: CGFloat, offset: CGSize = CGSizeZero) {
-        // Setup an action: repeatForever([move, reset])
+        // 🔧 an action: repeatForever([move, reset])
         let moveSpriteAction = SKAction.moveByX(-texture.size().width * 2.0, y: 0, duration: NSTimeInterval((1.0 / speed) * texture.size().width * 2.0))
         let resetSpriteAction = SKAction.moveByX(texture.size().width * 2.0, y: 0, duration: 0.0)
         let moveSpritesForeverAction = SKAction.repeatActionForever(SKAction.sequence([moveSpriteAction, resetSpriteAction]))
@@ -73,7 +73,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
     }
     
-    func setupPhysicsWorld() {
+    func 🔧🌍() {
         // Add Gravity!
         self.physicsWorld.gravity = CGVectorMake(0.0, -5.0)
         self.physicsWorld.contactDelegate = self
