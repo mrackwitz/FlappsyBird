@@ -29,16 +29,17 @@ class GameScene: SKScene {
     }
     
     func setupGround() {
-        let sprite = SKSpriteNode(texture: groundTexture)
-        sprite.setScale(2.0)
-        sprite.position = CGPointMake(sprite.size.width / 2.0, sprite.size.height / 2.0)
-        self.addChild(sprite)
+        addBackgroundSprite(groundTexture)
     }
     
     func setupSkyline() {
-        let sprite = SKSpriteNode(texture: skyTexture)
+        addBackgroundSprite(skyTexture, offset: CGSize(width: 0, height: groundTexture.size().height * 2.0))
+    }
+    
+    func addBackgroundSprite(texture: SKTexture, offset: CGSize = CGSizeZero) {
+        let sprite = SKSpriteNode(texture: texture)
         sprite.setScale(2.0)
-        sprite.position = CGPointMake(sprite.size.width / 2.0, sprite.size.height / 2.0 + groundTexture.size().height * 2)
+        sprite.position = CGPointMake(sprite.size.width / 2.0 + offset.width, sprite.size.height / 2.0 + offset.height)
         self.addChild(sprite)
     }
     
