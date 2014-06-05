@@ -10,6 +10,10 @@ import SpriteKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    enum CollisionBitMask : UInt32 {
+        case Floor = 1
+    }
+    
     let skyColor = SKColor(red: 81.0/255.0, green: 192.0/255.0, blue: 201.0/255.0, alpha: 1.0)
     
     let groundTexture = SKTexture(imageNamed: "Land")
@@ -39,6 +43,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         ground.position = CGPointMake(0, groundTexture.size().height)
         ground.physicsBody = SKPhysicsBody(rectangleOfSize: CGSizeMake(self.frame.size.width, groundTexture.size().height * 2.0))
         ground.physicsBody.dynamic = false
+        ground.physicsBody.categoryBitMask = CollisionBitMask.Floor.toRaw()
         self.addChild(ground)
     }
     
@@ -83,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         bird.physicsBody.dynamic = true
+        bird.physicsBody.contactTestBitMask = CollisionBitMask.Floor.toRaw()
         
         self.addChild(bird)
     }
