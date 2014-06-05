@@ -19,6 +19,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     let groundTexture = SKTexture(imageNamed: "Land")
     let skyTexture    = SKTexture(imageNamed: "Sky")
     
+    var bird : SKNode?
+    
     override func didMoveToView(view: SKView) {
         /* Setup your scene here */
         setupScene()
@@ -84,11 +86,12 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         let animAction = SKAction.animateWithTextures([birdTexture1, birdTexture2, birdTexture3, birdTexture4], timePerFrame: 0.2)
         let flapAction = SKAction.repeatActionForever(animAction)
-        bird.runAction(flapAction)
+        bird.runAction(flapAction, withKey: "flap")
         
         bird.physicsBody = SKPhysicsBody(circleOfRadius: bird.size.height / 2.0)
         bird.physicsBody.dynamic = true
         bird.physicsBody.contactTestBitMask = CollisionBitMask.Floor.toRaw()
+        self.bird = bird
         
         self.addChild(bird)
     }
@@ -104,6 +107,9 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     func didBeginContact(contact: SKPhysicsContact!) {
         /* Called when two physic objects collide */
         NSLog("didBeginContact: %@", contact)
+        
+        // Bird flaps no more!
+        self.bird!.removeActionForKey("flap")
     }
     
     func didEndContact(contact: SKPhysicsContact!) {
