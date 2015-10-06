@@ -1,6 +1,13 @@
 FlappsyBird
 ===========
 
+---
+
+#### :warning: Out-of-date :warning:
+This was done in the week of WWDC '14 when the first version of Swift was introduced and never been updated since.
+
+---
+
 FlappyBird written in Swift - step by step.
 
 Clone the entire repo and checkout either the [first step](/../../tree/steps/001_clean_new_xcode_project)
